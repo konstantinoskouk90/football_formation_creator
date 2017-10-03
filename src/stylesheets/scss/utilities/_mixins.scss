@@ -1,0 +1,15 @@
+// ================================= 
+//   MIXINS
+// =================================
+
+// Create a flex container
+@mixin flexProps(
+  $disp: flex, 
+  $dir: null,
+  $just: null, 
+  $align: null) {
+  display: $disp;
+  flex-direction: $dir;
+  justify-content: $just;
+  align-items: $align;
+}

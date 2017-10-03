@@ -37,7 +37,8 @@
   "cssProcessor": {
     "id": "sass",
     "displayName": "Sass",
-    "fileExtension": ".scss"
+    "fileExtension": ".scss",
+    "source": "src/**/*.scss"
   },
   "editor": {
     "id": "vscode",
