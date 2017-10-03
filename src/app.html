@@ -1,9 +1,15 @@
 <template>
 
   <require from="./stylesheets/css/main.css"></require>
-  <require from="./home"></require>
   <require from="./components/top"></require>
+  <require from="./components/add-player/add-player"></require>
+  <require from="./components/squad"></require>
+  <require from="./components/lineup"></require>
 
   <top></top>
-  <home></home>
+  <div class="main-container">
+    <add-player></add-player>
+    <squad></squad>
+    <lineup></lineup>
+  </div>
 </template>

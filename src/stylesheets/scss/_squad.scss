@@ -1,0 +1,17 @@
+.squad-wrapper {
+  @include flexProps($dir: row, $just: center, $align: flex-start);
+  flex: 1;
+  background: yellow;
+  width: 300px;
+  height: 300px;
+}
+
+.player-full-name {
+  width: 200px;
+  height: 25px;
+  display: block;
+  background-color: $black;
+  color: $white;
+  margin-top: 5px;
+  font-family: $font-stack-primary;
+}

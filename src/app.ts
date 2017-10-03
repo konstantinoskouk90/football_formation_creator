@@ -9,7 +9,7 @@ export class App {
     config.title = 'Football Squad';
     
     config.map([
-      { route: '', moduleId: 'home', title: 'Home' },
+      { route: '', moduleId: 'app', title: 'Homepage' },
       { route: 'edit/:id', moduleId: 'edit-player', name: 'edit'  }
     ]);
 

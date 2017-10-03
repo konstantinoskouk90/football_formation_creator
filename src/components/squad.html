@@ -1,0 +1,9 @@
+<template>
+  <div class="squad-wrapper">
+    <ul class="list-group">
+      <li repeat.for="player of players" class="player">
+          <h4 class="player-full-name">${player.firstName} ${player.lastName}</h4>
+      </li>
+    </ul>
+  </div>
+</template>
