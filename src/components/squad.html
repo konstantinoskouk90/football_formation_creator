@@ -2,7 +2,8 @@
   <div class="squad-wrapper">
     <ul class="list-group">
       <li repeat.for="player of players" class="player">
-          <h4 class="player-full-name">${player.firstName} ${player.lastName}</h4>
+        <h4 class="player-full-name">${player.firstName} ${player.lastName}</h4>
+        <button class="player-remove" click.trigger="removePlayer(player)">Remove</button>
       </li>
     </ul>
   </div>

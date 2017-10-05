@@ -1,17 +1,21 @@
 import { inject } from 'aurelia-framework';
+import { WebAPI } from '../../data';
 import { Player } from './player';
-import { squad } from '../../data';
 
+@inject(WebAPI)
 export class AddPlayer {
 
   firstName: string;
   lastName: string;
   email: string;
   phoneNumber: string;
+  players;
+  
+  constructor(private api: WebAPI) { }
 
   createPlayer = () => {
     // Push to player to squad array
-    squad.push(new Player(this.firstName, this.lastName, this.email, this.phoneNumber));
+    this.api.addPlayer(new Player(this.firstName, this.lastName, this.email, this.phoneNumber));
     // Empty fields
     this.firstName = ''; this.lastName = ''; this.email = ''; this.phoneNumber = '';
   }
