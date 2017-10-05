@@ -1,18 +1,37 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPI } from '../../web-api/web-api';
-import { squadUpdated, lineupUpdated, lineupRemoved } from '../../messages';
+import { squadUpdated, lineupUpdated, lineupRemoved, squadRemoved } from '../../messages';
+
+interface Player {
+  id: string,
+  firstName: string,
+  lastName: string,
+  email: string,
+  phoneNumber: number
+}
 
 @inject(WebAPI, EventAggregator)
 export class Lineup {
 
-  players: object[] = [];
+  players: Player[] = [];
   starters;
   changedVal;
 
   constructor(private api: WebAPI, private ea: EventAggregator) {
     ea.subscribe(squadUpdated, msg => {
       this.players.push(msg.player);
+    });
+    ea.subscribe(squadRemoved, msg => {
+      let instance = JSON.parse(JSON.stringify(msg.player));
+      let found = this.players.filter(x => x.id == msg.player.id)[0];
+      if (found) {
+        let index = this.players.indexOf(found);
+        if (index !== -1) {
+          this.players.splice(index, 1);
+          this.ea.publish(new lineupRemoved(msg.player.id, ''));
+        }
+      }
     });
   }
 
