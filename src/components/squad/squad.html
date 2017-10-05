@@ -1,6 +1,9 @@
 <template>
   <div class="squad-wrapper">
     <ul class="list-group">
+      <div class="heading">
+        <span class="squad-title">Squad</span>
+      </div>
       <li repeat.for="player of players" class="player">
         <h4 class="player-full-name">${player.firstName} ${player.lastName}</h4>
         <button class="player-remove" click.trigger="removePlayer(player)">Remove</button>

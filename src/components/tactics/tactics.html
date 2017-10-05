@@ -1,0 +1,28 @@
+<template>
+    <div class="lineup-wrapper">
+        <div class="heading">
+            <span class="player-title">Tactics</span>
+        </div>
+        <ul class="list-group visual">
+            <div>
+                <h4 class="starter-id">GK</h4>
+                <h4 class="starter-id">RB</h4>
+                <h4 class="starter-id">CBR</h4>
+                <h4 class="starter-id">CBL</h4>
+                <h4 class="starter-id">LB</h4>
+                <h4 class="starter-id">MR</h4>
+                <h4 class="starter-id">CMR</h4>
+                <h4 class="starter-id">CML</h4>
+                <h4 class="starter-id">ML</h4>
+                <h4 class="starter-id">ST</h4>
+                <h4 class="starter-id">ST</h4>
+            </div>
+            <div>
+                <li repeat.for="starter of starters" class="starter ${starter.id}">
+                    <h4 class="starter-name">${starter.lastName}</h4>
+                    </select>
+                </li>
+            </div>
+        </ul>
+    </div>
+</template>

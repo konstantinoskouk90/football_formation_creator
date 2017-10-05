@@ -68,13 +68,12 @@ export class WebAPI {
     this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
-        let instance = { id: id, firstName: '', lastName: changedVal };
+        let instance = { id: id, firstName: changedVal.split(" ")[0], lastName: changedVal.split(" ")[1] };
         let found = lineup.filter(x => x.id == id)[0];
         if (found) {
           let index = lineup.indexOf(found);
           lineup[index] = instance;
         }
-        console.log(lineup);
         resolve(instance);
         this.isRequesting = false;
       }, latency);
@@ -93,7 +92,6 @@ export class WebAPI {
             lineup[index] = instance;
           }
         }
-        console.log(lineup);
         resolve(instance);
         this.isRequesting = false;
       }, latency);
@@ -113,14 +111,13 @@ export class WebAPI {
     return new Promise(resolve => {
       setTimeout(() => {
         let instance = JSON.parse(JSON.stringify(player));
-        let found = squad.filter(x => x.firstName == player.firstName)[0];
+        let found = squad.filter(x => x.id == player.id)[0];
         if (found) {
           let index = squad.indexOf(found);
           if (index !== -1) {
             squad.splice(index, 1);
           }
         }
-        console.log(squad);
         resolve(instance);
         this.isRequesting = false;
       }, latency);
@@ -133,7 +130,6 @@ export class WebAPI {
       setTimeout(() => {
         let instance = JSON.parse(JSON.stringify(player));
         squad.push(instance);
-        console.log(squad);
         resolve(instance);
         this.isRequesting = false;
       }, latency);

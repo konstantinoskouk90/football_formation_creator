@@ -1,15 +1,17 @@
 <template>
 
   <require from="./stylesheets/css/main.css"></require>
-  <require from="./components/top"></require>
-  <require from="./components/add-player/add-player"></require>
-  <require from="./components/squad"></require>
-  <require from="./components/lineup"></require>
+  <require from="./components/top/top"></require>
+  <require from="./components/create/create"></require>
+  <require from="./components/squad/squad"></require>
+  <require from="./components/lineup/lineup"></require>
+  <require from="./components/tactics/tactics"></require>
 
   <top></top>
   <div class="main-container">
-    <add-player></add-player>
+    <create></create>
     <squad></squad>
     <lineup></lineup>
+    <tactics></tactics>
   </div>
 </template>
