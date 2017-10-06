@@ -1,7 +1,7 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPI } from '../../web-api/web-api';
-import { squadUpdated, lineupUpdated, lineupRemoved, squadRemoved } from '../../messages';
+import { squadUpdated, lineupUpdated, lineupRemoved, squadRemoved } from '../../messages/messages';
 
 interface Player {
   id: string,
@@ -36,7 +36,64 @@ export class Lineup {
   }
 
   created() {
-    this.starters = this.api.getLineup();
+    this.starters = [
+      {
+        id: 'GK',
+        firstName: '',
+        lastName: '',
+        email: ''
+      }, {
+        id: 'RB',
+        firstName: '',
+        lastName: '',
+        email: ''
+      }, {
+        id: 'CBR',
+        firstName: '',
+        lastName: '',
+        email: ''
+      }, {
+        id: 'CBL',
+        firstName: '',
+        lastName: '',
+        email: ''
+      }, {
+        id: 'LB',
+        firstName: '',
+        lastName: '',
+        email: ''
+      }, {
+        id: 'MR',
+        firstName: '',
+        lastName: '',
+        email: ''
+      }, {
+        id: 'CMR',
+        firstName: '',
+        lastName: '',
+        email: ''
+      }, {
+        id: 'CML',
+        firstName: '',
+        lastName: '',
+        email: ''
+      }, {
+        id: 'ML',
+        firstName: '',
+        lastName: '',
+        email: ''
+      }, {
+        id: 'STR',
+        firstName: '',
+        lastName: '',
+        email: ''
+      }, {
+        id: 'STL',
+        firstName: '',
+        lastName: '',
+        email: ''
+      }
+    ];
   }
 
   dropdownChanged(id, changedValue) {

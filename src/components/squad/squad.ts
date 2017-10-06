@@ -1,39 +1,35 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPI } from '../../web-api/web-api';
-import { squadUpdated, squadRemoved } from '../../messages';
+import { IPlayer } from '../../interfaces/interfaces';
+import { removeS } from '../../helper/helper';
+import { squadUpdated, squadRemoved } from '../../messages/messages';
 
-interface Player {
-  id: string,
-  firstName: string,
-  lastName: string,
-  email: string,
-  phoneNumber: number
-}
-
-@inject(WebAPI, EventAggregator)
+@inject(EventAggregator, WebAPI)
 export class Squad {
 
-  players: Player[] = [];
+  constructor(private ea: EventAggregator, private api: WebAPI, private players: IPlayer[]) {
 
-  constructor(private api: WebAPI, private ea: EventAggregator) {
+    // Initialize empty local players array
+    this.players = [];
 
-    //need to update add player api
+    // Listen for squadUpdated messages from other components
     ea.subscribe(squadUpdated, msg => {
+      // Update local players array accordingly
       this.players.push(msg.player);
     });
   }
 
+  // Remove a player from the squad arrays - global and local - and send message to update other components
   removePlayer(player) {
+    
+    // Remove a player from the global web api squad array
     this.api.removeFromSquad(player).then(player => {
-      let instance = JSON.parse(JSON.stringify(player));
-      let found = this.players.filter(x => x.id == player.id)[0];
-      if (found) {
-        let index = this.players.indexOf(found);
-        if (index !== -1) {
-          this.players.splice(index, 1);
-        }
-      }
+      
+      // Make use of helper function removeS to remove and item from the local squad array
+      this.players = removeS(this.players, player);
+      
+      // Notify other components of player being removed from squad
       this.ea.publish(new squadRemoved(player));
     });
   }

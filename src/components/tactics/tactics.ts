@@ -1,7 +1,7 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPI } from '../../web-api/web-api';
-import { squadUpdated, squadRemoved, lineupUpdated, lineupRemoved } from '../../messages';
+import { squadUpdated, squadRemoved, lineupUpdated, lineupRemoved } from '../../messages/messages';
 
 @inject(WebAPI, EventAggregator)
 export class Tactics {

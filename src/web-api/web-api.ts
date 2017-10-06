@@ -73,7 +73,42 @@ export let lineup = [
 
 export class WebAPI {
 
+  // Not requesting flag
   isRequesting = false;
+
+  // Squad
+
+  addToSquad(player) {
+    this.isRequesting = true;
+    return new Promise(resolve => {
+      setTimeout(() => {
+        let instance = JSON.parse(JSON.stringify(player));
+        squad.push(instance);
+        resolve(instance);
+        this.isRequesting = false;
+      }, latency);
+    });
+  }
+
+  removeFromSquad(player) {
+    this.isRequesting = true;
+    return new Promise(resolve => {
+      setTimeout(() => {
+        let instance = JSON.parse(JSON.stringify(player));
+        let found = squad.filter(x => x.id == player.id)[0];
+        if (found) {
+          let index = squad.indexOf(found);
+          if (index !== -1) {
+            squad.splice(index, 1);
+          }
+        }
+        resolve(instance);
+        this.isRequesting = false;
+      }, latency);
+    });
+  }
+
+  // Lineup
 
   addToLineup(id, changedVal) {
     this.isRequesting = true;
@@ -108,59 +143,4 @@ export class WebAPI {
       }, latency);
     });
   }
-
-  getLineup() {
-    return lineup;
-  }
-
-  getSquad() {
-    return squad;
-  }
-
-  removeFromSquad(player) {
-    this.isRequesting = true;
-    return new Promise(resolve => {
-      setTimeout(() => {
-        let instance = JSON.parse(JSON.stringify(player));
-        let found = squad.filter(x => x.id == player.id)[0];
-        if (found) {
-          let index = squad.indexOf(found);
-          if (index !== -1) {
-            squad.splice(index, 1);
-          }
-        }
-        resolve(instance);
-        this.isRequesting = false;
-      }, latency);
-    });
-  }
-
-  addPlayer(player) {
-    this.isRequesting = true;
-    return new Promise(resolve => {
-      setTimeout(() => {
-        let instance = JSON.parse(JSON.stringify(player));
-        squad.push(instance);
-        resolve(instance);
-        this.isRequesting = false;
-      }, latency);
-    });
-  }
-
-  /*savePlayer(player) {
-    this.isRequesting = true;
-    return new Promise(resolve => {
-      setTimeout(() => {
-        let instance = JSON.parse(JSON.stringify(player));
-        let found = lineup.filter(x => x.id == player.id)[0];
-
-        if (found) {
-          let index = lineup.indexOf(found);
-          lineup[index] = instance;
-        }
-        resolve(instance);
-        this.isRequesting = false;
-      }, latency);
-    });
-  }*/
 }
