@@ -8,7 +8,7 @@
         <h4 class="starter-position">${starter.id}</h4>
         <select id=${starter.id} value.bind="changedVal" change.delegate="dropdownChanged(starter.id, changedVal)">
           <option selected value>-- --</option>
-          <option repeat.for="player of players">${player.firstName} ${player.lastName}</option>
+          <option repeat.for="player of players">${player.firstName} ${player.lastName} ${player.email}</option>
         </select>
       </li>
     </ul>

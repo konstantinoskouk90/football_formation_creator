@@ -11,5 +11,5 @@ export class lineupUpdated {
 }
 
 export class lineupRemoved {
-  constructor(public id, public changedValue) { }
+  constructor(public id) { }
 }

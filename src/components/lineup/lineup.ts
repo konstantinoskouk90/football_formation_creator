@@ -29,7 +29,7 @@ export class Lineup {
         let index = this.players.indexOf(found);
         if (index !== -1) {
           this.players.splice(index, 1);
-          this.ea.publish(new lineupRemoved(msg.player.id, ''));
+          this.ea.publish(new lineupRemoved(msg.player.id));
         }
       }
     });
@@ -47,7 +47,7 @@ export class Lineup {
         if (document.querySelectorAll("select")[i].getAttribute("id") !== id) {
           document.querySelectorAll("select")[i].value = '';
           this.api.removeFromLineup(document.querySelectorAll("select")[i].getAttribute("id"));
-          this.ea.publish(new lineupRemoved(document.querySelectorAll("select")[i].getAttribute("id"), changedValue));
+          this.ea.publish(new lineupRemoved(document.querySelectorAll("select")[i].getAttribute("id")));
         }
       }
     }

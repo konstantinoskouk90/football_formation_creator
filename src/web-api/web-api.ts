@@ -6,57 +6,68 @@ export let lineup = [
   {
     id: 'GK',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: ''
   },
   {
     id: 'RB',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: ''
   },
   {
     id: 'CBR',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: ''
   },
   {
     id: 'CBL',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: ''
   },
   {
     id: 'LB',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: ''
   },
   {
     id: 'MR',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: ''
   },
   {
     id: 'CMR',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: ''
   },
   {
     id: 'CML',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: ''
   },
   {
     id: 'ML',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: ''
   },
   {
     id: 'STR',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: ''
   },
   {
     id: 'STL',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: ''
   }
 ];
 
@@ -68,7 +79,7 @@ export class WebAPI {
     this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
-        let instance = { id: id, firstName: changedVal.split(" ")[0], lastName: changedVal.split(" ")[1] };
+        let instance = { id: id, firstName: changedVal.split(" ")[0], lastName: changedVal.split(" ")[1], email: changedVal.split(" ")[2] };
         let found = lineup.filter(x => x.id == id)[0];
         if (found) {
           let index = lineup.indexOf(found);
@@ -84,7 +95,7 @@ export class WebAPI {
     this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
-        let instance = { id: id, firstName: '', lastName: '' };
+        let instance = { id: id, firstName: '', lastName: '', email: '' };
         let found = lineup.filter(x => x.id == id)[0];
         if (found) {
           let index = lineup.indexOf(found);
@@ -136,7 +147,7 @@ export class WebAPI {
     });
   }
 
-  savePlayer(player) {
+  /*savePlayer(player) {
     this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
@@ -151,5 +162,5 @@ export class WebAPI {
         this.isRequesting = false;
       }, latency);
     });
-  }
+  }*/
 }
