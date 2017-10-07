@@ -1,99 +1,52 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPI } from '../../web-api/web-api';
+import { IPlayer, IStarter } from '../../interfaces/interfaces';
+import { removeS } from '../../helper/helper';
+import { lineup } from '../../settings/data';
 import { squadUpdated, lineupUpdated, lineupRemoved, squadRemoved } from '../../messages/messages';
 
-interface Player {
-  id: string,
-  firstName: string,
-  lastName: string,
-  email: string,
-  phoneNumber: number
-}
-
-@inject(WebAPI, EventAggregator)
+@inject(EventAggregator, WebAPI)
 export class Lineup {
 
-  players: Player[] = [];
-  starters;
   changedVal;
 
-  constructor(private api: WebAPI, private ea: EventAggregator) {
+  constructor(private ea: EventAggregator,
+    private api: WebAPI,
+    private players: IPlayer[],
+    private starters: IStarter[]
+  ) {
+
+    // Listen for squadUpdated messages from other components
     ea.subscribe(squadUpdated, msg => {
+      // Update local players array accordingly
       this.players.push(msg.player);
     });
+
+    // Listen for squadRemoved messages from other components
     ea.subscribe(squadRemoved, msg => {
-      let instance = JSON.parse(JSON.stringify(msg.player));
-      let found = this.players.filter(x => x.id == msg.player.id)[0];
+      // Update local players array accordingly
+      this.players = removeS(this.players, msg.player);
+      // Notify other components of player being removed from lineup
+      this.ea.publish(new lineupRemoved(msg.player.id));
+      let instance = { id: msg.player.id, firstName: '', lastName: '', email: '' };
+      let found = this.starters.filter(x => x.id == msg.player.id)[0];
       if (found) {
-        let index = this.players.indexOf(found);
+        let index = this.starters.indexOf(found);
         if (index !== -1) {
-          this.players.splice(index, 1);
-          this.ea.publish(new lineupRemoved(msg.player.id));
+          this.starters.splice(index, 1, instance);
+          console.log(this.starters);
         }
       }
     });
   }
 
+  // Initialize arrays
   created() {
-    this.starters = [
-      {
-        id: 'GK',
-        firstName: '',
-        lastName: '',
-        email: ''
-      }, {
-        id: 'RB',
-        firstName: '',
-        lastName: '',
-        email: ''
-      }, {
-        id: 'CBR',
-        firstName: '',
-        lastName: '',
-        email: ''
-      }, {
-        id: 'CBL',
-        firstName: '',
-        lastName: '',
-        email: ''
-      }, {
-        id: 'LB',
-        firstName: '',
-        lastName: '',
-        email: ''
-      }, {
-        id: 'MR',
-        firstName: '',
-        lastName: '',
-        email: ''
-      }, {
-        id: 'CMR',
-        firstName: '',
-        lastName: '',
-        email: ''
-      }, {
-        id: 'CML',
-        firstName: '',
-        lastName: '',
-        email: ''
-      }, {
-        id: 'ML',
-        firstName: '',
-        lastName: '',
-        email: ''
-      }, {
-        id: 'STR',
-        firstName: '',
-        lastName: '',
-        email: ''
-      }, {
-        id: 'STL',
-        firstName: '',
-        lastName: '',
-        email: ''
-      }
-    ];
+    // Local players array
+    this.players = [];
+    // Local starters array
+    this.starters = lineup;
   }
 
   dropdownChanged(id, changedValue) {
@@ -105,12 +58,26 @@ export class Lineup {
           document.querySelectorAll("select")[i].value = '';
           this.api.removeFromLineup(document.querySelectorAll("select")[i].getAttribute("id"));
           this.ea.publish(new lineupRemoved(document.querySelectorAll("select")[i].getAttribute("id")));
+          let instance = { id: document.querySelectorAll("select")[i].getAttribute("id"), firstName: '', lastName: '', email: '' };
+          let found = this.starters.filter(x => x.id == document.querySelectorAll("select")[i].getAttribute("id"))[0];
+          if (found) {
+            let index = this.starters.indexOf(found);
+            if (index !== -1) {
+              this.starters.splice(index, 1, instance);
+              console.log(this.starters);
+            }
+          }
         }
       }
     }
     this.api.addToLineup(id, changedValue);
     this.ea.publish(new lineupUpdated(id, changedValue));
+    let instance = { id: id, firstName: changedValue.split(" ")[0], lastName: changedValue.split(" ")[1], email: changedValue.split(" ")[2] };
+    let found = this.starters.filter(x => x.id == id)[0];
+    if (found) {
+      let index = this.starters.indexOf(found);
+      this.starters[index] = instance;
+    }
+    console.log(this.starters);
   }
 }
-
-//I HAVE TO UPDATE THE LINEUP ARRAY OF OBJECTS TO REFLECT THE DROPDOWN CHANGES

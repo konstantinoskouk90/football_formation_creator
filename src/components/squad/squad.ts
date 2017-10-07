@@ -10,14 +10,16 @@ export class Squad {
 
   constructor(private ea: EventAggregator, private api: WebAPI, private players: IPlayer[]) {
 
-    // Initialize empty local players array
-    this.players = [];
-
     // Listen for squadUpdated messages from other components
     ea.subscribe(squadUpdated, msg => {
       // Update local players array accordingly
       this.players.push(msg.player);
     });
+  }
+
+  // Initialize local players array
+  created() {
+    this.players = [];
   }
 
   // Remove a player from the squad arrays - global and local - and send message to update other components

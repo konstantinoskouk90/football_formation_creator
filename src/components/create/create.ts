@@ -23,17 +23,22 @@ export class Create {
     this.id = this.email;
 
     // Create a new player and add to the global web api squad array
-    this.api.addToSquad(new CreatePlayer(this.id, this.firstName, this.lastName, this.email, this.phoneNumber)).then(player => {
+    this.api.addToSquad(new CreatePlayer(this.id,
+      this.firstName,
+      this.lastName,
+      this.email,
+      this.phoneNumber))
+      .then(player => {
 
-      // Notify other components of player being added to squad
-      this.ea.publish(new squadUpdated(player));
+        // Notify other components of player being added to squad
+        this.ea.publish(new squadUpdated(player));
 
-      // Reset input fields after successful addition
-      this.firstName = undefined;
-      this.lastName = undefined;
-      this.email = undefined;
-      this.phoneNumber = undefined;
-    });
+        // Reset input fields after successful addition
+        this.firstName = undefined;
+        this.lastName = undefined;
+        this.email = undefined;
+        this.phoneNumber = undefined;
+      });
   }
 
   // Validate input field values

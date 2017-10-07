@@ -5,3 +5,10 @@ export interface IPlayer {
     email: string,
     phoneNumber: number
 }
+
+export interface IStarter {
+    id: string,
+    firstName: string,
+    lastName: string,
+    email: string
+}

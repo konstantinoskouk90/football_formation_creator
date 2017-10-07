@@ -1,4 +1,4 @@
-let latency = 0;
+const latency = 0;
 
 export let squad = [];
 
@@ -120,6 +120,7 @@ export class WebAPI {
           let index = lineup.indexOf(found);
           lineup[index] = instance;
         }
+        console.log(lineup);
         resolve(instance);
         this.isRequesting = false;
       }, latency);
@@ -136,6 +137,7 @@ export class WebAPI {
           let index = lineup.indexOf(found);
           if (index !== -1) {
             lineup[index] = instance;
+            console.log(lineup);
           }
         }
         resolve(instance);
