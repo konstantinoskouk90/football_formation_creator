@@ -13,7 +13,11 @@ export class Create {
     private firstName: string,
     private lastName: string,
     private email: string,
-    private phoneNumber: number
+    private homeNumber: number,
+    private mobileNumber: number,
+    private dateOfBirth: Date,
+    private position: string,
+    private footedness: string
   ) { }
 
   // Add player to squad arrays - global and local - and send message to update other components
@@ -27,7 +31,11 @@ export class Create {
       this.firstName,
       this.lastName,
       this.email,
-      this.phoneNumber))
+      this.homeNumber,
+      this.mobileNumber,
+      this.dateOfBirth,
+      this.position,
+      this.footedness))
       .then(player => {
 
         // Notify other components of player being added to squad
@@ -37,12 +45,16 @@ export class Create {
         this.firstName = undefined;
         this.lastName = undefined;
         this.email = undefined;
-        this.phoneNumber = undefined;
+        this.homeNumber = undefined;
+        this.mobileNumber = undefined;
+        this.dateOfBirth = undefined;
+        this.position = undefined;
+        this.footedness = undefined;
       });
   }
 
   // Validate input field values
   get canCreate() {
-    return this.firstName && this.lastName && this.email && this.phoneNumber;
+    return this.firstName && this.lastName && this.email;
   }
 }

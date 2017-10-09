@@ -4,9 +4,16 @@
       <div class="heading">
         <span class="squad-title">Squad</span>
       </div>
-      <li repeat.for="player of players" class="player">
-        <h4 class="player-full-name">${player.firstName} ${player.lastName}</h4>
+      <li show.bind="players.length > 0" repeat.for="player of players" class="player">
+        <div class="player-name-wrapper">
+          <h4 class="player-full-name">${player.firstName} ${player.lastName}</h4>
+        </div>
         <button class="player-remove" click.trigger="removePlayer(player)">Remove</button>
+      </li>
+      <li show.bind="players.length === 0" class="no-players">
+        <div class="no-players-wrapper">
+          <h4 class="no-players-message">No players have been added</h4>
+        </div>
       </li>
     </ul>
   </div>

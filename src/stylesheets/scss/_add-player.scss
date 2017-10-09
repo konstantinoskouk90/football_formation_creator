@@ -1,13 +1,70 @@
 .add-player-wrapper {
-  @include flexProps($dir: row, $just: center, $align: center);
   flex: 1;
-  background: blue;
+  background: #020C7E;
   width: 300px;
-  height: 300px;
+  height: 645.8px; 
 }
 
-.add-player-title,
-.form-group {
-  margin-top: 20px;
+.add-player-title {
+  @include flexProps($dir: row, $just: center, $align: center);
+  padding-top: 10px;
+  padding-bottom: 15px;
   font-family: $font-stack-primary;
+  font-size: 14px;
+  font-weight: $weight-m;
+  background-color: #FEC12D;
+  height: 40px;
+  line-height: 40px;
+}
+
+.control-label {
+  font-family: $font-stack-primary;
+  font-size: 12px;
+  color: $white;
+}
+
+input {
+  width: 150px; 
+  height: 25px;
+  border: 1px solid #e3e3e3; 
+  border-radius: 3px; 
+  color: #020C7E;
+  font-family: $font-stack-primary;
+  font-size: 12px; 
+  line-height: 12.5px;
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+  text-align-last: left;
+  padding-left: 5px;
+  direction: ltr;
+  outline: none;
+}
+
+.form-horizontal {
+  @include flexProps($dir: column, $just: center, $align: center);
+  padding-top: 10px;
+}
+
+.control-label {
+  @include flexProps($dir: row, $just: center, $align: center);
+  padding-top: 13.5px;
+  padding-bottom: 13.5px;
+}
+
+.button-bar {
+  @include flexProps($dir: row, $just: center, $align: center);
+  padding-top: 25px;
+  button {
+    width: 150px; 
+    height: 25px;
+    border: 0;
+    border-radius: 3px;
+    color: #020C7E;
+    font-family: $font-stack-primary;
+    font-size: 12px; 
+    line-height: 12.5px;
+    background-color: #FEC12D;
+    outline: none;
+    cursor: pointer;
+  }
 }

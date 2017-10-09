@@ -3,7 +3,11 @@ export interface IPlayer {
     firstName: string,
     lastName: string,
     email: string,
-    phoneNumber: number
+    homeNumber: number,
+    mobileNumber: number,
+    dateOfBirth: Date,
+    position: string,
+    footedness: string
 }
 
 export interface IStarter {

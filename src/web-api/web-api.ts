@@ -77,7 +77,6 @@ export class WebAPI {
   isRequesting = false;
 
   // Squad
-
   addToSquad(player) {
     this.isRequesting = true;
     return new Promise(resolve => {
@@ -109,7 +108,6 @@ export class WebAPI {
   }
 
   // Lineup
-
   addToLineup(id, changedVal, optionSel) {
     this.isRequesting = true;
     return new Promise(resolve => {

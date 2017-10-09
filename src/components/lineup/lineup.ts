@@ -2,7 +2,7 @@ import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPI } from '../../web-api/web-api';
 import { IPlayer, IStarter } from '../../interfaces/interfaces';
-import { addL, removeS, removeL, populateArray } from '../../helper/helper';
+import { addL, removeS, removeL, populateArray } from '../../helpers/helpers';
 import { squadUpdated, lineupUpdated, lineupRemoved, squadRemoved } from '../../messages/messages';
 
 @inject(EventAggregator, WebAPI)

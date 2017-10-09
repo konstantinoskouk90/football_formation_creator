@@ -2,7 +2,7 @@ import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPI } from '../../web-api/web-api';
 import { IStarter } from '../../interfaces/interfaces';
-import { populateArray } from '../../helper/helper';
+import { populateArray } from '../../helpers/helpers';
 import { squadRemoved, lineupUpdated, lineupRemoved } from '../../messages/messages';
 
 @inject(EventAggregator, WebAPI)
@@ -15,7 +15,7 @@ export class Tactics {
       let found = this.starters.filter(x => x.id == msg.id)[0];
       if (found) {
         let index = this.starters.indexOf(found);
-        if (index > -1) {
+        if (index !== -1) {
           this.starters.splice(index, 1, instance);
         }
       }
@@ -26,7 +26,7 @@ export class Tactics {
       let found = this.starters.filter(x => x.id == msg.id)[0];
       if (found) {
         let index = this.starters.indexOf(found);
-        if (index > -1) {
+        if (index !== -1) {
           this.starters.splice(index, 1, instance);
         }
       }
