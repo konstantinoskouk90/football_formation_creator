@@ -7,7 +7,7 @@ export class squadRemoved {
 }
 
 export class lineupUpdated {
-  constructor(public id, public changedValue) { }
+  constructor(public id, public changedValue, public optionSel) { }
 }
 
 export class lineupRemoved {

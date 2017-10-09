@@ -1,73 +1,17 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPI } from '../../web-api/web-api';
-import { squadUpdated, squadRemoved, lineupUpdated, lineupRemoved } from '../../messages/messages';
+import { IStarter } from '../../interfaces/interfaces';
+import { populateArray } from '../../helper/helper';
+import { squadRemoved, lineupUpdated, lineupRemoved } from '../../messages/messages';
 
-@inject(WebAPI, EventAggregator)
+@inject(EventAggregator, WebAPI)
 export class Tactics {
 
-  starters = [
-    {
-      id: 'GK',
-      firstName: '',
-      lastName: '',
-      email: ''
-    }, {
-      id: 'RB',
-      firstName: '',
-      lastName: '',
-      email: ''
-    }, {
-      id: 'CBR',
-      firstName: '',
-      lastName: '',
-      email: ''
-    }, {
-      id: 'CBL',
-      firstName: '',
-      lastName: '',
-      email: ''
-    }, {
-      id: 'LB',
-      firstName: '',
-      lastName: '',
-      email: ''
-    }, {
-      id: 'MR',
-      firstName: '',
-      lastName: '',
-      email: ''
-    }, {
-      id: 'CMR',
-      firstName: '',
-      lastName: '',
-      email: ''
-    }, {
-      id: 'CML',
-      firstName: '',
-      lastName: '',
-      email: ''
-    }, {
-      id: 'ML',
-      firstName: '',
-      lastName: '',
-      email: ''
-    }, {
-      id: 'STR',
-      firstName: '',
-      lastName: '',
-      email: ''
-    }, {
-      id: 'STL',
-      firstName: '',
-      lastName: '',
-      email: ''
-    }
-  ];
+  constructor(private ea: EventAggregator, private api: WebAPI, private starters: IStarter[]) {
 
-  constructor(private api: WebAPI, private ea: EventAggregator) {
     ea.subscribe(lineupUpdated, msg => {
-      let instance = { id: msg.id, firstName: msg.changedValue.split(" ")[0], lastName: msg.changedValue.split(" ")[1], email: msg.changedValue.split(" ")[2] };
+      let instance = { id: msg.id, firstName: msg.changedValue.split(" ")[0], lastName: msg.changedValue.split(" ")[1], email: msg.optionSel };
       let found = this.starters.filter(x => x.id == msg.id)[0];
       if (found) {
         let index = this.starters.indexOf(found);
@@ -76,6 +20,7 @@ export class Tactics {
         }
       }
     });
+
     ea.subscribe(lineupRemoved, msg => {
       let instance = { id: msg.id, firstName: '', lastName: '', email: '' };
       let found = this.starters.filter(x => x.id == msg.id)[0];
@@ -86,6 +31,7 @@ export class Tactics {
         }
       }
     });
+
     ea.subscribe(squadRemoved, msg => {
       let instance = JSON.parse(JSON.stringify(msg.player));
       let found = this.starters.filter(x => x.email == msg.player.id)[0];
@@ -96,5 +42,10 @@ export class Tactics {
         }
       }
     });
+  }
+
+  created() {
+    // Local starters array
+    this.starters = populateArray();
   }
 }

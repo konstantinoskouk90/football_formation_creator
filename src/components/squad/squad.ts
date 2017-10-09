@@ -28,7 +28,7 @@ export class Squad {
     // Remove a player from the global web api squad array
     this.api.removeFromSquad(player).then(player => {
       
-      // Make use of helper function removeS to remove and item from the local squad array
+      // Make use of helper function removeS to remove a player from the local squad array
       this.players = removeS(this.players, player);
       
       // Notify other components of player being removed from squad

@@ -110,17 +110,16 @@ export class WebAPI {
 
   // Lineup
 
-  addToLineup(id, changedVal) {
+  addToLineup(id, changedVal, optionSel) {
     this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
-        let instance = { id: id, firstName: changedVal.split(" ")[0], lastName: changedVal.split(" ")[1], email: changedVal.split(" ")[2] };
+        let instance = { id: id, firstName: changedVal.split(" ")[0], lastName: changedVal.split(" ")[1], email: optionSel };
         let found = lineup.filter(x => x.id == id)[0];
         if (found) {
           let index = lineup.indexOf(found);
           lineup[index] = instance;
         }
-        console.log(lineup);
         resolve(instance);
         this.isRequesting = false;
       }, latency);
@@ -137,7 +136,6 @@ export class WebAPI {
           let index = lineup.indexOf(found);
           if (index !== -1) {
             lineup[index] = instance;
-            console.log(lineup);
           }
         }
         resolve(instance);
