@@ -46,7 +46,7 @@
 }
 
 .starter-container.attack {
-    padding-top: 40px;
+    padding-top: 50px;
 }
 
 .starter.wrapper {
@@ -62,4 +62,14 @@
     font-size: 14px;
     font-weight: $weight-s;
     border: 2px solid #020C7E;
+}
+
+.starter-name {
+    color: #020C7E;
+    text-align: center;
+    font-family: $font-stack-primary;
+    font-size: 14px;
+    font-weight: $weight-m;
+    padding-top: 80px;
+    position: fixed;
 }

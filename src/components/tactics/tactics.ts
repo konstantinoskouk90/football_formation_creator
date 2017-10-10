@@ -2,13 +2,13 @@ import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPI } from '../../web-api/web-api';
 import { IStarter } from '../../interfaces/interfaces';
-import { populateArray } from '../../helpers/helpers';
+import { populateArray, getGoal, getDefence, getMidfield, getAttack } from '../../helpers/helpers';
 import { squadRemoved, lineupUpdated, lineupRemoved } from '../../messages/messages';
 
 @inject(EventAggregator, WebAPI)
 export class Tactics {
 
-  constructor(private ea: EventAggregator, private api: WebAPI, private starters: IStarter[], private goal) {
+  constructor(private ea: EventAggregator, private api: WebAPI, private starters: IStarter[], private goal, private defence, private midfield, private attack) {
 
     ea.subscribe(lineupUpdated, msg => {
       let instance = { id: msg.id, firstName: msg.changedValue.split(" ")[0], lastName: msg.changedValue.split(" ")[1], email: msg.optionSel };
@@ -16,7 +16,13 @@ export class Tactics {
       if (found) {
         let index = this.starters.indexOf(found);
         if (index !== -1) {
+          
           this.starters.splice(index, 1, instance);
+          
+          this.goal = getGoal(this.starters);
+          this.defence = getDefence(this.starters);
+          this.midfield = getMidfield(this.starters);
+          this.attack = getAttack(this.starters);
         }
       }
     });
@@ -28,6 +34,11 @@ export class Tactics {
         let index = this.starters.indexOf(found);
         if (index !== -1) {
           this.starters.splice(index, 1, instance);
+
+          this.goal = getGoal(this.starters);
+          this.defence = getDefence(this.starters);
+          this.midfield = getMidfield(this.starters);
+          this.attack = getAttack(this.starters);
         }
       }
     });
@@ -39,6 +50,11 @@ export class Tactics {
         let index = this.starters.indexOf(found);
         if (index !== -1) {
           this.starters.splice(index, 1, { id: found.id, firstName: '', lastName: '', email: '' });
+
+          this.goal = getGoal(this.starters);
+          this.defence = getDefence(this.starters);
+          this.midfield = getMidfield(this.starters);
+          this.attack = getAttack(this.starters);
         }
       }
     });
@@ -47,6 +63,10 @@ export class Tactics {
   created() {
     // Local starters array
     this.starters = populateArray();
-    this.goal = [];
+
+    this.goal = getGoal(this.starters);
+    this.defence = getDefence(this.starters);
+    this.midfield = getMidfield(this.starters);
+    this.attack = getAttack(this.starters);
   }
 }

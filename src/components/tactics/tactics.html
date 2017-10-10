@@ -6,97 +6,43 @@
         <div class="tactics-pitch">
             <ul class="list-group visual">
                 <div class="container attack">
-                    <div class="starter-container attack">
+                    <div repeat.for="a of attack" class="starter-container attack">
                         <div class="starter attack wrapper">
-                            <span>STL</span>
+                            <span>${a.id}</span>
                         </div>
-                        <div>
-                            <span>${starters[10].lastName}</span>
-                        </div>
-                    </div>
-                    <div class="starter-container attack">
-                        <div class="starter attack wrapper">
-                            <span>STR</span>
-                        </div>
-                        <div>
-                            <span>${starters[9].lastName}</span>
+                        <div class="starter-name">
+                            <span>${a.lastName}</span>
                         </div>
                     </div>
                 </div>
                 <div class="container midfield">
-                    <div class="starter-container midfield">
+                    <div repeat.for="m of midfield" class="starter-container midfield">
                         <div class="starter midfield wrapper">
-                            <span>ML</span>
+                            <span>${m.id}</span>
                         </div>
-                        <div>
-                            <span>${starters[8].lastName}</span>
-                        </div>
-                    </div>
-                    <div class="starter-container midfield">
-                        <div class="starter midfield wrapper">
-                            <span>CML</span>
-                        </div>
-                        <div>
-                            <span>${starters[7].lastName}</span>
-                        </div>
-                    </div>
-                    <div class="starter-container midfield">
-                        <div class="starter midfield wrapper">
-                            <span>CMR</span>
-                        </div>
-                        <div>
-                            <span>${starters[6].lastName}</span>
-                        </div>
-                    </div>
-                    <div class="starter-container midfield">
-                        <div class="starter midfield wrapper">
-                            <span>MR</span>
-                        </div>
-                        <div>
-                            <span>${starters[5].lastName}</span>
+                        <div class="starter-name">
+                            <span>${m.lastName}</span>
                         </div>
                     </div>
                 </div>
                 <div class="container defence">
-                    <div class="starter-container defence">
+                    <div repeat.for="d of defence" class="starter-container defence">
                         <div class="starter defence wrapper">
-                            <span>LB</span>
+                            <span>${d.id}</span>
                         </div>
-                        <div>
-                            <span>${starters[4].lastName}</span>
-                        </div>
-                    </div>
-                    <div class="starter-container defence">
-                        <div class="starter defence wrapper">
-                            <span>CBL</span>
-                        </div>
-                        <div>
-                            <span>${starters[3].lastName}</span>
-                        </div>
-                    </div>
-                    <div class="starter-container defence">
-                        <div class="starter defence wrapper">
-                            <span>CBR</span>
-                        </div>
-                        <div>
-                            <span>${starters[2].lastName}</span>
-                        </div>
-                    </div>
-                    <div class="starter-container defence">
-                        <div class="starter defence wrapper">
-                            <span>RB</span>
-                        </div>
-                        <div>
-                            <span>${starters[1].lastName}</span>
+                        <div class="starter-name">
+                            <span>${d.lastName}</span>
                         </div>
                     </div>
                 </div>
-                <div class="starter-container goal">
-                    <div class="starter goal wrapper">
-                        <span>GK</span>
-                    </div>
-                    <div if.bind="starters[0].lastName.length > 0">
-                        <span>${starters[0].id}</span>
+                <div class="container goal">
+                    <div repeat.for="g of goal" class="starter-container goal">
+                        <div class="starter goal wrapper">
+                            <span>${g.id}</span>
+                        </div>
+                        <div class="starter-name">
+                            <span>${g.lastName}</span>
+                        </div>
                     </div>
                 </div>
             </ul>

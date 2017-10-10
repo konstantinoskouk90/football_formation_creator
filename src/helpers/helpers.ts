@@ -44,3 +44,39 @@ export const populateArray = () => {
   });
   return arr;
 }
+
+export const getGoal = (starters) => {
+  let arr = [];
+  const goal = [starters[0]];
+  goal.forEach(function(k, i) {
+    arr.push(k);
+  });
+  return arr;
+}
+
+export const getDefence = (starters) => {
+  let arr = [];
+  const defence = [starters[4], starters[3], starters[2], starters[1]];
+  defence.forEach(function(k, i) {
+    arr.push(k);
+  });
+  return arr;
+}
+
+export const getMidfield = (starters) => {
+  let arr = [];
+  const midfield = [starters[8], starters[7], starters[6], starters[5]];
+  midfield.forEach(function(k, i) {
+    arr.push(k);
+  });
+  return arr;
+}
+
+export const getAttack = (starters) => {
+  let arr = [];
+  const attack = [starters[10], starters[9]];
+  attack.forEach(function(k, i) {
+    arr.push(k);
+  });
+  return arr;
+}
