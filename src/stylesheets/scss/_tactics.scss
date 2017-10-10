@@ -22,3 +22,44 @@
     height: 40px;
     line-height: 40px;
 }
+
+.container {
+    @include flexProps($dir: row, $just: space-evenly, $align: center);
+}
+
+.starter-container {
+    @include flexProps($dir: column, $just: space-evenly, $align: center);
+    width: auto;
+    height: 100px;
+}
+
+.starter-container.goal {
+    margin-top: 5px;
+}
+
+.starter-container.defence {
+    margin-top: 75px;
+}
+
+.starter-container.midfield {
+    margin-top: 110px;
+}
+
+.starter-container.attack {
+    padding-top: 40px;
+}
+
+.starter.wrapper {
+    @include flexProps($dir: row, $just: center, $align: center);
+    width: 50px;
+    height: 50px;
+    background-color: #FEC12D;
+    color: #020C7E;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 100px;
+    font-family: $font-stack-primary;
+    font-size: 14px;
+    font-weight: $weight-s;
+    border: 2px solid #020C7E;
+}

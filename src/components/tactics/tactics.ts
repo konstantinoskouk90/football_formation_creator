@@ -8,7 +8,7 @@ import { squadRemoved, lineupUpdated, lineupRemoved } from '../../messages/messa
 @inject(EventAggregator, WebAPI)
 export class Tactics {
 
-  constructor(private ea: EventAggregator, private api: WebAPI, private starters: IStarter[]) {
+  constructor(private ea: EventAggregator, private api: WebAPI, private starters: IStarter[], private goal) {
 
     ea.subscribe(lineupUpdated, msg => {
       let instance = { id: msg.id, firstName: msg.changedValue.split(" ")[0], lastName: msg.changedValue.split(" ")[1], email: msg.optionSel };
@@ -47,5 +47,6 @@ export class Tactics {
   created() {
     // Local starters array
     this.starters = populateArray();
+    this.goal = [];
   }
 }
