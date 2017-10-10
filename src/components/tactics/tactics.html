@@ -8,40 +8,40 @@
                 <div class="container attack">
                     <div repeat.for="a of attack" class="starter-container attack">
                         <div class="starter attack wrapper">
-                            <span>${a.id}</span>
+                            <h4>${a.id}</h4>
                         </div>
                         <div class="starter-name">
-                            <span>${a.lastName}</span>
+                            <span>${a.firstName.split("")[0]}. ${a.lastName}</span>
                         </div>
                     </div>
                 </div>
                 <div class="container midfield">
                     <div repeat.for="m of midfield" class="starter-container midfield">
                         <div class="starter midfield wrapper">
-                            <span>${m.id}</span>
+                            <h4>${m.id}</h4>
                         </div>
                         <div class="starter-name">
-                            <span>${m.lastName}</span>
+                            <span>${m.firstName.split("")[0]}. ${m.lastName}</span>
                         </div>
                     </div>
                 </div>
                 <div class="container defence">
                     <div repeat.for="d of defence" class="starter-container defence">
                         <div class="starter defence wrapper">
-                            <span>${d.id}</span>
+                            <h4>${d.id}</h4>
                         </div>
                         <div class="starter-name">
-                            <span>${d.lastName}</span>
+                            <span>${d.firstName.split("")[0]}. ${d.lastName}</span>
                         </div>
                     </div>
                 </div>
                 <div class="container goal">
                     <div repeat.for="g of goal" class="starter-container goal">
                         <div class="starter goal wrapper">
-                            <span>${g.id}</span>
+                            <h4>${g.id}</h4>
                         </div>
                         <div class="starter-name">
-                            <span>${g.lastName}</span>
+                            <span>${g.firstName.split("")[0]}. ${g.lastName}</span>
                         </div>
                     </div>
                 </div>

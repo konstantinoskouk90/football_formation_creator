@@ -8,7 +8,7 @@
         <h4 class="starter-position">${starter.id}</h4>
         <select id=${starter.id} value.bind="changedVal" change.delegate="dropdownChanged(starter.id, changedVal)">
           <option selected value></option>
-          <option repeat.for="player of players" id=${player.email}>${player.firstName} ${player.lastName}</option>
+          <option repeat.for="player of players" id=${player.email}>${player.firstName.split("")[0]}. ${player.lastName}</option>
         </select>
       </li>
     </ul>
