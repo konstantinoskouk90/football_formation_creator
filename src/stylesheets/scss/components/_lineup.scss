@@ -1,3 +1,7 @@
+// ================================= 
+//   LINEUP
+// =================================
+
 .lineup-wrapper {
   flex: 1;
   background: #020C7E;
@@ -34,34 +38,12 @@
   color: $white;
 }
 
-.custom-select select:focus {
-  -webkit-box-shadow: 0 0 3px 1px #FEC12D;
-  -moz-box-shadow: 0 0 3px 1px #FEC12D;
-  box-shadow: 0 0 3px 1px #FEC12D;
-}
-
-.custom-select:after {
-  content: "▼";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  font-size: 60%;
-  line-height: 30px;
-  padding: 0 7px;
-  color: white;
-  pointer-events:none;
-  -webkit-border-radius: 0 6px 6px 0;
-  -moz-border-radius: 0 6px 6px 0;
-  border-radius: 0 6px 6px 0;
-}
-
 select {
   width: 150px; 
   height: 25px;
   border: 1px solid #e3e3e3; 
   border-radius: 3px; 
-  background: url("https://image.ibb.co/iMeAJv/selectbox_arrow.png") right center no-repeat; 
+  background: url("//image.ibb.co/iMeAJv/selectbox_arrow.png") right center no-repeat; 
   color: $white; 
   font-family: $font-stack-primary;
   font-size: 12px; 
@@ -72,12 +54,18 @@ select {
   padding-left: 5px;
   direction: ltr;
   outline: none;
+  cursor: pointer;
+  &:focus {
+    -webkit-box-shadow: 0 0 3px 1px #FEC12D;
+    -moz-box-shadow: 0 0 3px 1px #FEC12D;
+    box-shadow: 0 0 3px 1px #FEC12D;
+  }
+  &::-ms-expand { 
+    display: none; 
+  }
+  &:disabled {
+    &::-ms-expand { 
+      background: #f60;
+    } 
+  }
 }
-
-select::-ms-expand { 
-  display: none; 
-} 
-
-select:disabled::-ms-expand { 
-  background: #f60; 
-} 

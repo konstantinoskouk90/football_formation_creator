@@ -1,4 +1,4 @@
-const latency = 200;
+const latency = 0;
 
 export let squad = [];
 

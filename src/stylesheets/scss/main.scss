@@ -1,9 +1,14 @@
+// ================================= 
+//   MAIN
+// =================================
+
 @import 'utilities/variables';
 @import 'utilities/mixins';
 @import 'base/base';
 @import 'base/reset';
-@import 'top';
-@import 'create';
-@import 'squad';
-@import 'lineup';
-@import 'tactics';
+@import 'containers/app';
+@import 'components/top';
+@import 'components/create';
+@import 'components/squad';
+@import 'components/lineup';
+@import 'components/tactics';

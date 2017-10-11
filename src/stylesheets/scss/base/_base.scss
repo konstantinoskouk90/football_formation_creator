@@ -1,3 +1,7 @@
+// ================================= 
+//   BASE
+// =================================
+
 * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -13,9 +17,19 @@ body {
   background-color: #F4F4F4;
 }
 
-.main-container {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  width: 100%;
+input {
+  width: 150px; 
+  height: 25px;
+  border: 1px solid #e3e3e3; 
+  border-radius: 3px; 
+  color: #020C7E;
+  font-family: $font-stack-primary;
+  font-size: 12px; 
+  line-height: 12.5px;
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+  text-align-last: left;
+  padding-left: 5px;
+  direction: ltr;
+  outline: none;
 }

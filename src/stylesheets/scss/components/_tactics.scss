@@ -1,3 +1,7 @@
+// ================================= 
+//   TACTICS
+// =================================
+
 .tactics-wrapper {
     flex: 1;
     width: 400px;
@@ -41,35 +45,36 @@
     margin-top: 75px;
 }
 
-.starter-container.midfield {
+.starter-container {
+  &.midfield {
     margin-top: 110px;
-}
-
-.starter-container.attack {
+  }
+  &.attack {
     padding-top: 50px;
+  }
 }
 
 .starter.wrapper {
-    @include flexProps($dir: row, $just: center, $align: center);
-    width: 50px;
-    height: 50px;
-    background-color: #FEC12D;
-    color: #020C7E;
-    text-align: center;
-    line-height: 50px;
-    border-radius: 100px;
-    font-family: $font-stack-primary;
-    font-size: 14px;
-    font-weight: $weight-s;
-    border: 2px solid #020C7E;
+  @include flexProps($dir: row, $just: center, $align: center);
+  width: 50px;
+  height: 50px;
+  background-color: #FEC12D;
+  color: #020C7E;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 100px;
+  font-family: $font-stack-primary;
+  font-size: 14px;
+  font-weight: $weight-s;
+  border: 2px solid #020C7E;
 }
 
 .starter-name {
-    color: #020C7E;
-    text-align: center;
-    font-family: $font-stack-primary;
-    font-size: 14px;
-    font-weight: $weight-m;
-    padding-top: 80px;
-    position: fixed;
+  color: #020C7E;
+  text-align: center;
+  font-family: $font-stack-primary;
+  font-size: 14px;
+  font-weight: $weight-m;
+  padding-top: 80px;
+  position: fixed;
 }
