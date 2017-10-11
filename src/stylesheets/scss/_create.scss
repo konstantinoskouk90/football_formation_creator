@@ -68,3 +68,11 @@ input {
     cursor: pointer;
   }
 }
+
+.error-message {
+  @include flexProps($dir: row, $just: center, $align: center);
+  padding-top: 10px;
+  font-family: $font-stack-primary;
+  font-size: 12px;
+  color: red;
+}

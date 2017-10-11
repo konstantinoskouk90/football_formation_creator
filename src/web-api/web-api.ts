@@ -1,4 +1,4 @@
-const latency = 0;
+const latency = 200;
 
 export let squad = [];
 
@@ -73,24 +73,19 @@ export let lineup = [
 
 export class WebAPI {
 
-  // Not requesting flag
-  isRequesting = false;
-
-  // Squad
+  // Add to squad
   addToSquad(player) {
-    this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
         let instance = JSON.parse(JSON.stringify(player));
         squad.push(instance);
         resolve(instance);
-        this.isRequesting = false;
       }, latency);
     });
   }
 
+  // Remove from squad
   removeFromSquad(player) {
-    this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
         let instance = JSON.parse(JSON.stringify(player));
@@ -102,14 +97,12 @@ export class WebAPI {
           }
         }
         resolve(instance);
-        this.isRequesting = false;
       }, latency);
     });
   }
 
-  // Lineup
+  // Add to lineup
   addToLineup(id, changedVal, optionSel) {
-    this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
         let instance = { id: id, firstName: changedVal.split(" ")[0], lastName: changedVal.split(" ")[1], email: optionSel };
@@ -119,13 +112,12 @@ export class WebAPI {
           lineup[index] = instance;
         }
         resolve(instance);
-        this.isRequesting = false;
       }, latency);
     });
   }
 
+  // Remove from lineup
   removeFromLineup(id) {
-    this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
         let instance = { id: id, firstName: '', lastName: '', email: '' };
@@ -137,8 +129,15 @@ export class WebAPI {
           }
         }
         resolve(instance);
-        this.isRequesting = false;
       }, latency);
     });
+  }
+
+  // Check to see if user email address already exists
+  emailValidation = (e) => {
+    let found = squad.filter(x => x.email == e)[0];
+    if (found) {
+      return true;
+    }
   }
 }

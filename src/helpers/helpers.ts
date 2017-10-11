@@ -33,14 +33,16 @@ export const removeL = (starters, starter, attribute) => {
       starters.splice(index, 1, instance);
       return starters;
     }
+  } else {
+    return starters;
   }
 }
 
 export const populateArray = () => {
   let arr = [];
   const eleven = ["GK", 'RB', 'CBR', "CBL", "LB", "MR", "CMR", "CML", "ML", "STR", "STL"];
-  eleven.forEach(function(k, i) {
-    arr.push({id: k, firstName: '', lastName: '', email: ''});
+  eleven.forEach(function (k, i) {
+    arr.push({ id: k, firstName: '', lastName: '', email: '' });
   });
   return arr;
 }
@@ -48,7 +50,7 @@ export const populateArray = () => {
 export const getGoal = (starters) => {
   let arr = [];
   const goal = [starters[0]];
-  goal.forEach(function(k, i) {
+  goal.forEach(function (k, i) {
     arr.push(k);
   });
   return arr;
@@ -57,7 +59,7 @@ export const getGoal = (starters) => {
 export const getDefence = (starters) => {
   let arr = [];
   const defence = [starters[4], starters[3], starters[2], starters[1]];
-  defence.forEach(function(k, i) {
+  defence.forEach(function (k, i) {
     arr.push(k);
   });
   return arr;
@@ -66,7 +68,7 @@ export const getDefence = (starters) => {
 export const getMidfield = (starters) => {
   let arr = [];
   const midfield = [starters[8], starters[7], starters[6], starters[5]];
-  midfield.forEach(function(k, i) {
+  midfield.forEach(function (k, i) {
     arr.push(k);
   });
   return arr;
@@ -75,7 +77,7 @@ export const getMidfield = (starters) => {
 export const getAttack = (starters) => {
   let arr = [];
   const attack = [starters[10], starters[9]];
-  attack.forEach(function(k, i) {
+  attack.forEach(function (k, i) {
     arr.push(k);
   });
   return arr;

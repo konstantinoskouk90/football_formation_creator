@@ -8,65 +8,63 @@ import { squadRemoved, lineupUpdated, lineupRemoved } from '../../messages/messa
 @inject(EventAggregator, WebAPI)
 export class Tactics {
 
-  constructor(private ea: EventAggregator, private api: WebAPI, private starters: IStarter[], private goal, private defence, private midfield, private attack) {
+  constructor(private ea: EventAggregator,
+    private api: WebAPI,
+    private starters: IStarter[],
+    private goal: IStarter[],
+    private defence: IStarter[],
+    private midfield: IStarter[],
+    private attack: IStarter[]
+  ) {
 
-    ea.subscribe(lineupUpdated, msg => {
+    this.ea.subscribe(lineupUpdated, msg => {
       let instance = { id: msg.id, firstName: msg.changedValue.split(" ")[0], lastName: msg.changedValue.split(" ")[1], email: msg.optionSel };
       let found = this.starters.filter(x => x.id == msg.id)[0];
       if (found) {
         let index = this.starters.indexOf(found);
         if (index !== -1) {
-          
           this.starters.splice(index, 1, instance);
-          
-          this.goal = getGoal(this.starters);
-          this.defence = getDefence(this.starters);
-          this.midfield = getMidfield(this.starters);
-          this.attack = getAttack(this.starters);
+          this.setTactics(this.starters);
         }
       }
     });
 
-    ea.subscribe(lineupRemoved, msg => {
+    this.ea.subscribe(lineupRemoved, msg => {
       let instance = { id: msg.id, firstName: '', lastName: '', email: '' };
       let found = this.starters.filter(x => x.id == msg.id)[0];
       if (found) {
         let index = this.starters.indexOf(found);
         if (index !== -1) {
           this.starters.splice(index, 1, instance);
-
-          this.goal = getGoal(this.starters);
-          this.defence = getDefence(this.starters);
-          this.midfield = getMidfield(this.starters);
-          this.attack = getAttack(this.starters);
+          this.setTactics(this.starters);
         }
       }
     });
 
-    ea.subscribe(squadRemoved, msg => {
+    this.ea.subscribe(squadRemoved, msg => {
       let instance = JSON.parse(JSON.stringify(msg.player));
       let found = this.starters.filter(x => x.email == msg.player.id)[0];
       if (found) {
         let index = this.starters.indexOf(found);
         if (index !== -1) {
           this.starters.splice(index, 1, { id: found.id, firstName: '', lastName: '', email: '' });
-
-          this.goal = getGoal(this.starters);
-          this.defence = getDefence(this.starters);
-          this.midfield = getMidfield(this.starters);
-          this.attack = getAttack(this.starters);
+          this.setTactics(this.starters);
         }
       }
     });
   }
 
   created() {
-    // Local starters array
+    // Initialize local starters array
     this.starters = populateArray();
+    // Initialize local goal, defence, midfield, attack arrays
+    this.setTactics(this.starters);
+  }
 
-    this.goal = getGoal(this.starters);
-    this.defence = getDefence(this.starters);
-    this.midfield = getMidfield(this.starters);
-    this.attack = getAttack(this.starters);
+  setTactics = (starters) => {
+    this.goal = getGoal(starters);
+    this.defence = getDefence(starters);
+    this.midfield = getMidfield(starters);
+    this.attack = getAttack(starters);
   }
 }

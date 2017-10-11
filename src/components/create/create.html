@@ -65,6 +65,7 @@
       <div class="button-bar">
         <button class="btn btn-success" click.delegate="createPlayer()" disabled.bind="!canCreate">Create</button>
       </div>
+      <div if.bind="!emailValidate" class="error-message">Email already exists</div>
     </div>
   </div>
 </template>
