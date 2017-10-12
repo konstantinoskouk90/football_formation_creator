@@ -16,8 +16,6 @@
 <p>Node Package Manager is recommended, though not mandatory to run the app.</p>
 <ul>
 	<li>Clone repository</li>
-	<li>Redirect to root folder</li>
-	<li>npm install</li>
 	<li>Redirect to src/stylesheets</li>
 	<li>sass --watch scss:css</li>
 	<li>au run</li>
