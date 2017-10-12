@@ -3,69 +3,63 @@
 // =================================
 
 .lineup-wrapper {
-  flex: 1;
   background: #020C7E;
   width: 300px;
-  height: 645.8px; 
-}
-
-.lineup-title {
-  @include flexProps($dir: row, $just: center, $align: center);
-  padding-top: 10px;
-  padding-bottom: 15px;
-  font-family: $font-stack-primary;
-  font-size: 14px;
-  font-weight: $weight-m;
-  background-color: #FEC12D;
-  height: 40px;
-  line-height: 40px;
-}
-
-.select-style {
-  padding-top: 12.5px;
-  color: black;
-}
-
-.starter-position {
-  padding-bottom: 7.5px;
-}
-
-.custom-select {
-  @include flexProps($dir: column, $just: center, $align: center);
-  padding-top: 7.5px;
-  font-family: $font-stack-primary;
-  font-size: 11px;
-  color: $white;
-}
-
-select {
-  width: 150px; 
-  height: 25px;
-  border: 1px solid #e3e3e3; 
-  border-radius: 3px; 
-  background: url("//image.ibb.co/iMeAJv/selectbox_arrow.png") right center no-repeat; 
-  color: $white; 
-  font-family: $font-stack-primary;
-  font-size: 12px; 
-  line-height: 12.5px;
-  -webkit-appearance: none; 
-  -moz-appearance: none; 
-  text-align-last: left;
-  padding-left: 5px;
-  direction: ltr;
-  outline: none;
-  cursor: pointer;
-  &:focus {
-    -webkit-box-shadow: 0 0 3px 1px #FEC12D;
-    -moz-box-shadow: 0 0 3px 1px #FEC12D;
-    box-shadow: 0 0 3px 1px #FEC12D;
+  height: 645.8px;
+  .lineup-title {
+    @include flexProps($dir: row, $just: center, $align: center);
+    padding-top: 10px;
+    padding-bottom: 15px;
+    font-family: $font-stack-primary;
+    font-size: 14px;
+    font-weight: $weight-m;
+    background-color: #FEC12D;
+    height: 40px;
+    line-height: 40px;
   }
-  &::-ms-expand { 
-    display: none; 
-  }
-  &:disabled {
-    &::-ms-expand { 
-      background: #f60;
-    } 
+  .select-style {
+    padding-top: 12.5px;
+    .custom-select {
+      @include flexProps($dir: column, $just: center, $align: center);
+      padding-top: 7.5px;
+      .starter-position {
+        font-family: $font-stack-primary;
+        font-size: 11px;
+        font-weight: $weight-xs;
+        color: $white;
+        padding-bottom: 7.5px;
+      }
+      select {
+        width: 150px;
+        height: 25px;
+        border: 1px solid #e3e3e3; 
+        border-radius: 3px; 
+        background: url("//image.ibb.co/iMeAJv/selectbox_arrow.png") right center no-repeat; 
+        color: $white; 
+        font-family: $font-stack-primary;
+        font-size: 12px; 
+        line-height: 12.5px;
+        -webkit-appearance: none; 
+        -moz-appearance: none; 
+        text-align-last: left;
+        padding-left: 5px;
+        direction: ltr;
+        outline: none;
+        cursor: pointer;
+        &:focus {
+          -webkit-box-shadow: 0 0 3px 1px #FEC12D;
+          -moz-box-shadow: 0 0 3px 1px #FEC12D;
+          box-shadow: 0 0 3px 1px #FEC12D;
+        }
+        &::-ms-expand { 
+          display: none;
+        }
+        &:disabled {
+          &::-ms-expand { 
+            background: #f60;
+          } 
+        }
+      }
+    }
   }
 }

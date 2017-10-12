@@ -3,64 +3,58 @@
 // =================================
 
 .add-player-wrapper {
-  flex: 1;
   background: #020C7E;
   width: 300px;
-  height: 645.8px; 
-}
-
-.add-player-title {
-  @include flexProps($dir: row, $just: center, $align: center);
-  padding-top: 10px;
-  padding-bottom: 15px;
-  font-family: $font-stack-primary;
-  font-size: 14px;
-  font-weight: $weight-m;
-  background-color: #FEC12D;
-  height: 40px;
-  line-height: 40px;
-}
-
-.form-vertical {
-  @include flexProps($dir: column, $just: center, $align: center);
-  padding-top: 10px;
-}
-
-.control-label {
-  @include flexProps($dir: row, $just: center, $align: center);
-  padding-top: 13.5px;
-  padding-bottom: 13.5px;
-  font-family: $font-stack-primary;
-  font-size: 12px;
-  color: $white;
-}
-
-.button-bar {
-  @include flexProps($dir: row, $just: center, $align: center);
-  padding-top: 25px;
-  button {
-    width: 150px; 
-    height: 25px;
-    border: 0;
-    border-radius: 3px;
-    color: #020C7E;
+  height: 645.8px;
+  .add-player-title {
+    @include flexProps($dir: row, $just: center, $align: center);
+    padding-top: 10px;
+    padding-bottom: 15px;
     font-family: $font-stack-primary;
-    font-size: 12px; 
-    line-height: 12.5px;
+    font-size: 14px;
+    font-weight: $weight-m;
     background-color: #FEC12D;
-    outline: none;
-    cursor: pointer;
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
+    height: 40px;
+    line-height: 40px;
+  }
+  .form-vertical {
+    @include flexProps($dir: column, $just: center, $align: center);
+    padding-top: 10px;
+    .control-label {
+      @include flexProps($dir: row, $just: center, $align: center);
+      padding-top: 13.5px;
+      padding-bottom: 13.5px;
+      font-family: $font-stack-primary;
+      font-size: 12px;
+      color: $white;
     }
   }
-}
-
-.error-message {
-  @include flexProps($dir: row, $just: center, $align: center);
-  padding-top: 10px;
-  font-family: $font-stack-primary;
-  font-size: 12px;
-  color: red;
+  .button-bar {
+    @include flexProps($dir: row, $just: center, $align: center);
+    padding-top: 25px;
+    button {
+      width: 150px; 
+      height: 25px;
+      border: 0;
+      border-radius: 3px;
+      color: #020C7E;
+      font-family: $font-stack-primary;
+      font-size: 12px; 
+      line-height: 12.5px;
+      background-color: #FEC12D;
+      outline: none;
+      cursor: pointer;
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+  .error-message {
+    @include flexProps($dir: row, $just: center, $align: center);
+    padding-top: 10px;
+    font-family: $font-stack-primary;
+    font-size: 12px;
+    color: red;
+  }
 }

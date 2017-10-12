@@ -67,4 +67,8 @@ export class Tactics {
     this.midfield = getMidfield(starters);
     this.attack = getAttack(starters);
   }
+
+  lengthOfString(str) {
+    return str.firstName.length > 0 ? 'show' : 'hide';
+  }
 }

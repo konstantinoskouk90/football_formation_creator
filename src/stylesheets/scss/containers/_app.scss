@@ -3,8 +3,13 @@
 // =================================
 
 .main-container {
-  display: flex;
-  justify-content: space-between;
+  @include flexProps($dir: row, $just: center, $align: center);
   padding: 20px;
   width: 100%;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

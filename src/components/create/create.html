@@ -11,56 +11,48 @@
             <input type="text" placeholder="First Name" class="form-control" value.bind="firstName">
           </div>
         </div>
-
         <div class="form-group">
           <label class="control-label">Last Name *</label>
           <div class="input-container">
             <input type="text" placeholder="Last Name" class="form-control" value.bind="lastName">
           </div>
         </div>
-
         <div class="form-group">
           <label class="control-label">Email Address *</label>
           <div class="input-container">
             <input type="text" placeholder="Email" class="form-control" value.bind="email">
           </div>
         </div>
-
         <div class="form-group">
           <label class="control-label">Home Number</label>
           <div class="input-container">
             <input type="tel" placeholder="Home Number" class="form-control" value.bind="homeNumber">
           </div>
         </div>
-
         <div class="form-group">
           <label class="control-label">Mobile Number</label>
           <div class="input-container">
             <input type="tel" placeholder="Mobile Number" class="form-control" value.bind="mobileNumber">
           </div>
         </div>
-
         <div class="form-group">
           <label class="control-label">Date of Birth</label>
           <div class="input-container">
             <input type="date" placeholder="Date of Birth" class="form-control" value.bind="dateofBirth">
           </div>
         </div>
-
         <div class="form-group">
           <label class="control-label">Position</label>
           <div class="input-container">
             <input type="text" placeholder="Position" class="form-control" value.bind="position">
           </div>
         </div>
-
         <div class="form-group">
           <label class="control-label">Footedness</label>
           <div class="input-container">
             <input type="text" placeholder="Footedness" class="form-control" value.bind="footedness">
           </div>
         </div>
-
       </form>
       <div class="button-bar">
         <button class="btn btn-success" click.delegate="createPlayer()" disabled.bind="!canCreate">Create</button>
