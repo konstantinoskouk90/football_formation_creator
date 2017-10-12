@@ -16,8 +16,9 @@
 <p>Node Package Manager is recommended, though not mandatory to run the app.</p>
 <ul>
 	<li>Clone repository</li>
-	<li>Redirect to folder</li>
+	<li>Redirect to root folder</li>
 	<li>npm install</li>
+	<li>Redirect to src/stylesheets</li>
 	<li>sass --watch scss:css</li>
 	<li>au run</li>
 	<li>Enjoy!</li>
@@ -42,7 +43,7 @@
 <h2>TODO - Extend functionality and scale app</h2>
 
 <ul>
-    <li>Try getting the data directly from the 'fake' web api - avoiding using helper functions.</li>
+    <li>Try getting the data directly from the "fake" web api - avoid using helper functions.</li>
     <li>Allow viewing, editing and saving player attributes.</li>
 	<li>Be able to add substitutes - should be depicted in both the lineup and tactics components.</li>
     <li>Add tests.</li>
