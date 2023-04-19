@@ -59,7 +59,7 @@
     "url-loader": "^4.1.1",
     "vinyl-fs": "^3.0.3",
     "wait-on": "^5.2.1",
-    "webpack": "^5.12.2",
+    "webpack": "^5.76.0",
     "webpack-dev-server": "^3.11.1"
   },
   "jest": {
